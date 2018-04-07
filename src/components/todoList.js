@@ -25,7 +25,6 @@ class TodoList extends Component {
 
   addItem = e => {
       e.preventDefault();
-      console.log("sdfsdf>>>>",this.refs.title.input.value);
       if ( this.refs.title.input.value &&  this.refs.description.input.value ) {
           this.props.updateItem({
               title: this.refs.title.input.value,
@@ -79,7 +78,7 @@ class TodoList extends Component {
                     </form>
                     :
                     // eslint-disable-next-line
-                    <a href='javascript:void(0);' onClick={() => this.toggleForm(true) }>Add Item</a>
+                    <a href='javascript:void(0);' onClick={() => this.toggleForm(true) }>Add Task</a>
                 }
             </div>
         );

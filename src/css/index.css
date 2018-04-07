@@ -1,7 +1,15 @@
 body{
-	margin:0;
+	margin:0 auto;
 }
+
 .content-wrapper .list{
-	width: 33%;
+	width: 32%;
 	float:left;
+	border-right:2px solid #80CBC4;
+	min-height: 550px;
+	margin: 0 auto;
+
+}
+.content-wrapper .list:last-child{
+	border-right:none;
 }
