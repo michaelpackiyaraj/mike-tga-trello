@@ -1,0 +1,43 @@
+{
+  "data": [
+    {
+      "type": "todo",
+      "list": [
+        {
+          "title": "Todo title 1",
+          "description": "Todo description 1"
+        },
+        {
+          "title": "Todo title 2",
+          "description": "Todo description 2"
+        }
+      ]
+    },
+    {
+      "type": "inprogress",
+      "list": [
+        {
+          "title": "In Progress title 1",
+          "description": "In Progress description 1"
+        },
+        {
+          "title": "In Progress title 2",
+          "description": "In Progress description 2"
+        }
+      ]
+    },
+    {
+      "type": "done",
+      "list": [
+        {
+          "title": "Done title 1",
+          "description": "In Progress description 1"
+        },
+        {
+          "title": "Done title 2",
+          "description": "In Progress description 2"
+        }
+      ]
+    }
+  ]
+}
