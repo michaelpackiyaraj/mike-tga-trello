@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import Card from './card';
 import { Draggable, Droppable } from 'react-drag-and-drop';
+import Subheader from 'material-ui/Subheader';
+import {List, ListItem} from 'material-ui/List';
+import RaisedButton from 'material-ui/RaisedButton';
+import TextField from 'material-ui/TextField';
 
 class TodoList extends Component {
   constructor(props) {
@@ -21,13 +25,14 @@ class TodoList extends Component {
 
   addItem = e => {
       e.preventDefault();
-      if ( this.title.value &&  this.description.value ) {
+      console.log("sdfsdf>>>>",this.refs.title.input.value);
+      if ( this.refs.title.input.value &&  this.refs.description.input.value ) {
           this.props.updateItem({
-              title: this.title.value,
-              description: this.description.value
+              title: this.refs.title.input.value,
+              description: this.refs.description.input.value
           },this.props.type, []);
-            this.title.value = '';
-            this.description.value = '';
+            this.refs.title.input.value = '';
+            this.refs.description.input.value = '';
             this.toggleForm(false);
       }
   }
@@ -36,38 +41,45 @@ class TodoList extends Component {
     this.props.updateItem({item}, this.props.type, this.props.types);
    }
 
+
   removeItem(type, title) {
         this.props.removeItem({type, title});
   }
 
   render() {
+
         return (
             <div className='list-wrapper' onDrop={(e) => this.ondragover(e)}>
-                <h3>To Do List</h3>
+                <Subheader>To Do List</Subheader>
+               <List>
                 <Droppable types = {this.props.types} onDrop={this.onDrop}>
                     { this.props.cardList.map((eachCard, index)=> (
-                        <Draggable type={this.props.type} key={`todo-${index}`} data = {JSON.stringify({item: eachCard, removeType: this.props.type})} >
+                        <ListItem><Draggable type={this.props.type} key={`todo-${index}`} data = {JSON.stringify({item: eachCard, removeType: this.props.type})} >
                             <Card type={this.props.type} removeCallback={ this.removeItem.bind(this) } key={index} { ...eachCard } />
-                        </Draggable>
+                        </Draggable></ListItem>
                                         
                     ))}
                 </Droppable>
+                </List>
                 { (this.state.isFieldOpen) ?
                     <form>
                         <div>
-                            <label>Enter Title</label>
-                            <input type='text' ref={(elem) => this.title = elem} required />
+                            <TextField
+                                hintText="Enter Title"
+                                floatingLabelText="Enter Title" ref='title'
+                              />
                         </div>
                         <div>
-                            <label>Enter Description</label>
-                            <input type='text' ref={(elem) => this.description = elem} required />
+                            <TextField
+                                hintText="Enter Description"
+                                floatingLabelText="Enter Description" ref='description'
+                              />
                         </div>
-                        <button type="submit" onClick={(e) => this.addItem(e) }>Add Item</button>
+                        <RaisedButton label="Add Task" primary={true} onClick={(e) => this.addItem(e) } />
                     </form>
                     :
                     // eslint-disable-next-line
                     <a href='javascript:void(0);' onClick={() => this.toggleForm(true) }>Add Item</a>
-
                 }
             </div>
         );

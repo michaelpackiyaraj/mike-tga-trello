@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import Card from './card';
 import { Draggable, Droppable } from 'react-drag-and-drop';
+import {List, ListItem} from 'material-ui/List';
+import Subheader from 'material-ui/Subheader';
 
 class InprogressList extends Component {
 
@@ -15,14 +17,18 @@ class InprogressList extends Component {
   render() {
         return (
             <div className='list-wrapper'>
-                <h3>In Progress List</h3>
-                <Droppable types = {this.props.types} onDrop={this.onDrop}>
-                  { this.props.cardList.map((eachCard, index)=> (
-                    <Draggable type={this.props.type} key={`inprogress-${index}`} data = {JSON.stringify({item: eachCard, removeType: this.props.type})} >
-                        <Card type={this.props.type} removeCallback={ this.removeItem.bind(this) } key={index} { ...eachCard } />
-                    </Draggable>
-                  ))}
-                </Droppable>
+                <Subheader>In Progress List</Subheader>
+                <List>
+                  <Droppable types = {this.props.types} onDrop={this.onDrop}>
+                    { this.props.cardList.map((eachCard, index)=> (
+                      <ListItem>
+                        <Draggable type={this.props.type} key={`inprogress-${index}`} data = {JSON.stringify({item: eachCard, removeType: this.props.type})} >
+                            <Card type={this.props.type} removeCallback={ this.removeItem.bind(this) } key={index} { ...eachCard } />
+                        </Draggable>
+                      </ListItem>
+                    ))}
+                  </Droppable>
+                </List>
             </div>
         );
   }

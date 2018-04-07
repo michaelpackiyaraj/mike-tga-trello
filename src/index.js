@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import App from './app';
 import registerServiceWorker from './registerServiceWorker';
 
-import {cyan500} from 'material-ui/styles/colors';
+import {cyan500, grey900} from 'material-ui/styles/colors';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
@@ -17,7 +17,7 @@ const store = createStore(trelloApp);
 
 const muiTheme = getMuiTheme({
   palette: {
-    textColor: cyan500,
+    textColor: grey900,
   },
   appBar: {
     height: 100,
@@ -25,9 +25,11 @@ const muiTheme = getMuiTheme({
 });
 
 render(
-    <MuiThemeProvider muiTheme={muiTheme}><Provider store={store}>
-        <App />
-    </Provider></MuiThemeProvider>, 
+    <MuiThemeProvider muiTheme={muiTheme}>
+    	<Provider store={store}>
+        	<App />
+    	</Provider>
+    </MuiThemeProvider>, 
     document.getElementById('root')
 );
 registerServiceWorker();

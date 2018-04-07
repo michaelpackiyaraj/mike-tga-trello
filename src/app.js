@@ -7,11 +7,11 @@ import { bindActionCreators } from 'redux';
 import { getTaskDetails, addTask, removeTask } from './actions';
 import responseData from './mockData/taskData.json';
 
-
 import AppBar from 'material-ui/AppBar';
 import IconButton from 'material-ui/IconButton';
 import NavigationClose from 'material-ui/svg-icons/navigation/close';
 import FlatButton from 'material-ui/FlatButton';
+import './css/index.css';
 
 class App extends Component {
 
@@ -23,6 +23,7 @@ class App extends Component {
       this.props.actions.removeTask(obj);
   }
 
+ 
   updateItem = (data, type, types) => {
       const { item } = data;
       let updateItem;
@@ -61,13 +62,17 @@ class App extends Component {
   }
 
   render() {
-console.log("sasss",this.props);
 
+    const headerStyle = {
+          backgroundColor : '#004D40',
+          textAlign: 'center'
+    };
     const { todo = [], inprogress = [], done = [] } = this.props.taskDetails;
+
     return (
       <div className='tasks-list-container'>
         <header className='trello-header'>
-          <AppBar title="Welcome to Trello" />
+        <AppBar title="Welcome to Trello" style={headerStyle} iconElementLeft={(<div />)} />
         </header>
         <div className='content-wrapper'>
             <div className='list'>
@@ -79,7 +84,7 @@ console.log("sasss",this.props);
             <div className='list'>
                 <DoneList types = {['todo', 'inprogress']} type={'done'} cardList={ done } updateItem={ this.updateItem } removeItem={ this.removeItem } />
             </div>
-        </div> 
+        </div>
       </div>
     );
   }

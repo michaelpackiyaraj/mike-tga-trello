@@ -1,0 +1,7 @@
+body{
+	margin:0;
+}
+.content-wrapper .list{
+	width: 33%;
+	float:left;
+}
