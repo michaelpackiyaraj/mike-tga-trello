@@ -7,6 +7,12 @@ import { bindActionCreators } from 'redux';
 import { getTaskDetails, addTask, removeTask } from './actions';
 import responseData from './mockData/taskData.json';
 
+
+import AppBar from 'material-ui/AppBar';
+import IconButton from 'material-ui/IconButton';
+import NavigationClose from 'material-ui/svg-icons/navigation/close';
+import FlatButton from 'material-ui/FlatButton';
+
 class App extends Component {
 
     constructor(props) {
@@ -61,7 +67,7 @@ console.log("sasss",this.props);
     return (
       <div className='tasks-list-container'>
         <header className='trello-header'>
-          <h1 className='trello-title'>Welcome to Trello</h1>
+          <AppBar title="Welcome to Trello" />
         </header>
         <div className='content-wrapper'>
             <div className='list'>
