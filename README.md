@@ -43,14 +43,14 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 Runs the server to connect the mongodb.<br>
 
-Open [http://localhost:20180/tga_trello](http://localhost:2018/tga_trello) to view it in the browser
+Open [http://localhost:20180/tga_trello](http://localhost:2018/tga_trello) to view it in the browser<br>
 
 ### `mongodb`
 
-Install mongodb and do setup
-create the db name : tga_trello
-Collection name as taskcollections
+Install mongodb and do setup<br>
+create the db name : tga_trello<br>
+Collection name as taskcollections<br><br>
 
-Insert below Dummy data:
+Insert below Dummy data:<br>
 db.taskcollection.insertMany([{"type":"todo","list":[{"title":"Todo title 1","description":"Todo description 1"},{"title":"Todo title 2","description":"Todo description 2"}]},{"type":"inprogress","list":[{"title":"In Progress title 1","description":"In Progress description 1"},{"title":"In Progress title 2","description":"In Progress description 2"}]},{"type":"done","list":[{"title":"Done title 1","description":"In Progress description 1"},{"title":"Done title 2","description":"In Progress description 2"}]}])
 
