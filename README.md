@@ -37,3 +37,20 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+
+
+### `node server/index.js`
+
+Runs the server to connect the mongodb.<br>
+
+Open [http://localhost:20180/tga_trello](http://localhost:2018/tga_trello) to view it in the browser
+
+### `mongodb`
+
+Install mongodb and do setup
+create the db name : tga_trello
+Collection name as taskcollections
+
+Insert below Dummy data:
+db.taskcollection.insertMany([{"type":"todo","list":[{"title":"Todo title 1","description":"Todo description 1"},{"title":"Todo title 2","description":"Todo description 2"}]},{"type":"inprogress","list":[{"title":"In Progress title 1","description":"In Progress description 1"},{"title":"In Progress title 2","description":"In Progress description 2"}]},{"type":"done","list":[{"title":"Done title 1","description":"In Progress description 1"},{"title":"Done title 2","description":"In Progress description 2"}]}])
+
