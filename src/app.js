@@ -52,19 +52,20 @@ class App extends Component {
   }
 
  componentDidMount() {
-     /* fetch('https://api.myjson.com/bins/vgkil').then( (response) => {
-          return response.json();
+
+      fetch('http://localhost:2018/trello/gettask', {'Content-Type':'application/json'}).then( (response) => {
+        return response.json();
+       
       }).then( (details) => {
-          this.props.actions.getTaskDetails(details.data);
-          console.log(details.data, '===');
-      });*/
-      this.props.actions.getTaskDetails(responseData.data);
+         this.props.actions.getTaskDetails(details.data);
+      });
+      
   }
 
   render() {
 
     const headerStyle = {
-          backgroundColor : '#004D40',
+          backgroundColor : '#448AFF',
           textAlign: 'center'
     };
     const { todo = [], inprogress = [], done = [] } = this.props.taskDetails;
