@@ -15,9 +15,15 @@ class DoneList extends Component {
    }
 
   render() {
+
+      const headerStyle = {
+        fontSize : '30px',
+        paddingTop: '15px'
+      }
+
         return (
             <div className='list-wrapper'>
-                <Subheader>Done List</Subheader>
+                <Subheader style={headerStyle}>Done List</Subheader>
                 <List>
                 <Droppable types={this.props.types} onDrop={this.onDrop}>
                     { this.props.cardList.map((eachCard, index)=> (
