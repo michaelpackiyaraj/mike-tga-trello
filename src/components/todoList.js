@@ -46,10 +46,14 @@ class TodoList extends Component {
   }
 
   render() {
+    const headerStyle = {
+        fontSize : '30px',
+        paddingTop: '15px'
+    }
 
         return (
             <div className='list-wrapper' onDrop={(e) => this.ondragover(e)}>
-                <Subheader>To Do List</Subheader>
+                <Subheader style={headerStyle}>To Do List</Subheader>
                <List>
                 <Droppable types = {this.props.types} onDrop={this.onDrop}>
                     { this.props.cardList.map((eachCard, index)=> (

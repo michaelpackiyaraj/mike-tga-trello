@@ -13,3 +13,48 @@ body{
 .content-wrapper .list:last-child{
 	border-right:none;
 }
+
+.tasks-list-container {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+
+
+.wrapper {
+    display: flex;
+}
+
+.list {
+    width: 100%;
+}
+
+label {
+  display: block;
+}
+.card {
+  position: relative;
+  padding: 10px;
+  background: grey;
+  border: 1px solid;
+  border-radius: 10px;
+  color: #fff;
+}
+div[type='inprogress'] .card {
+  background: #8a5151;
+}
+div[type='done'] .card {
+  background: #70bf6f;
+}
+.card .remove {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+.Droppable {
+    min-height: 100px;
+}

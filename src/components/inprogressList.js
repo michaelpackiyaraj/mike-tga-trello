@@ -15,9 +15,15 @@ class InprogressList extends Component {
   }
 
   render() {
+
+      const headerStyle = {
+        fontSize : '30px',
+        paddingTop: '15px'
+      }
+
         return (
             <div className='list-wrapper'>
-                <Subheader>In Progress List</Subheader>
+                <Subheader style={headerStyle}>In Progress List</Subheader>
                 <List>
                   <Droppable types = {this.props.types} onDrop={this.onDrop}>
                     { this.props.cardList.map((eachCard, index)=> (
