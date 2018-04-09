@@ -1,6 +1,9 @@
 # mike-tga-trello
 TGA Trello app
 
+## Screenshot
+![alt text](https://github.com/michaelpackiyaraj/mike-tga-trello/blob/master/screenshot.jpg)
+
 ## Available Scripts
 
 In the project directory, you can run:
