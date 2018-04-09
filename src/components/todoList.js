@@ -5,6 +5,8 @@ import Subheader from 'material-ui/Subheader';
 import {List, ListItem} from 'material-ui/List';
 import RaisedButton from 'material-ui/RaisedButton';
 import TextField from 'material-ui/TextField';
+import FloatingActionButton from 'material-ui/FloatingActionButton';
+import ContentAdd from 'material-ui/svg-icons/content/add';
 
 class TodoList extends Component {
   constructor(props) {
@@ -81,9 +83,11 @@ class TodoList extends Component {
                         <RaisedButton label="Add Task" primary={true} onClick={(e) => this.addItem(e) } />
                     </form>
                     :
-                    // eslint-disable-next-line
-                    <a href='javascript:void(0);' onClick={() => this.toggleForm(true) }>Add Task</a>
+                    <FloatingActionButton>
+                      <ContentAdd onClick={() => this.toggleForm(true) } />
+                    </FloatingActionButton>
                 }
+                
             </div>
         );
   }
