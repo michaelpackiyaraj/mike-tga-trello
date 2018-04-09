@@ -23,7 +23,7 @@ body{
   height: 80px;
 }
 
-
+.white-color{color:#FFF !important;}
 
 .wrapper {
     display: flex;
