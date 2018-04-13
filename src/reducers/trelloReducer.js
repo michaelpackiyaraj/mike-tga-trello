@@ -1,5 +1,4 @@
 const trelloReducer = (state = {}, action) => {
-
     switch (action.type) {
       case 'TASK_DETAILS':
             let trelloContent = {};
@@ -15,7 +14,13 @@ const trelloReducer = (state = {}, action) => {
             const { type, title } = action.item;
 
             const newList = state[type].filter((eachList) => eachList.title !== title);
-        return Object.assign({}, state, {[type]: newList})
+        return Object.assign({}, state, {[type]: newList});
+      case 'EDIT_TASK':
+            let editContent = {};
+            action.item.forEach(element => {
+                editContent = Object.assign({}, editContent, state, { [element.type]: element.list } )
+            });
+            return editContent;
       default:
         return state
     }
