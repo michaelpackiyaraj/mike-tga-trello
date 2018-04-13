@@ -23,13 +23,14 @@ class App extends Component {
       this.props.actions.removeTask(obj);
   }
 
- 
   updateItem = (data, type, types) => {
       const { item } = data;
       let updateItem;
       if(types.length) {
         updateItem = JSON.parse(item[types[0]] ? item[types[0]] : item[types[1]]);
         updateItem.addType = type;
+
+
       }
       else {
         updateItem = {item: data, addType: type};
@@ -38,17 +39,8 @@ class App extends Component {
       this.props.actions.addTask(updateItem);
   }
 
-   updateItem(data, type, types) {
-      const { item } = data;
-      let updateItem;
-      if(types.length) {
-        updateItem = JSON.parse(item[types[0]] ? item[types[0]] : item[types[1]]);
-        updateItem.addType = type;
-      }
-      else {
-        updateItem = {item: data, addType: type};
-      }
-      this.props.actions.addTodoList(updateItem);
+  editItem = (data, type, types) => {
+    console.log("data appjs>>>",data, type, types);
   }
 
  componentDidMount() {
@@ -77,13 +69,13 @@ class App extends Component {
         </header>
         <div className='content-wrapper'>
             <div className='list'>
-                <TodoList types = {['inprogress', 'done']} type={'todo'} cardList={ todo } updateItem={ this.updateItem } removeItem={ this.removeItem } />
+                <TodoList types = {['inprogress', 'done']} type={'todo'} cardList={ todo } updateItem={ this.updateItem } removeItem={ this.removeItem } editItem={ this.editItem } />
             </div>
             <div className='list'>
-                <InprogressList types = {['done', 'todo']} type={'inprogress'} cardList={ inprogress } updateItem={ this.updateItem } removeItem={ this.removeItem } />
+                <InprogressList types = {['done', 'todo']} type={'inprogress'} cardList={ inprogress } updateItem={ this.updateItem } removeItem={ this.removeItem } editItem={ this.editItem } />
             </div>
             <div className='list'>
-                <DoneList types = {['todo', 'inprogress']} type={'done'} cardList={ done } updateItem={ this.updateItem } removeItem={ this.removeItem } />
+                <DoneList types = {['todo', 'inprogress']} type={'done'} cardList={ done } updateItem={ this.updateItem } removeItem={ this.removeItem } editItem={ this.editItem } />
             </div>
         </div>
       </div>

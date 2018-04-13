@@ -18,3 +18,10 @@ export const removeTask = (data) => {
         item: data
     }
 }
+
+export const editTask = (data) => {
+    return {
+        type: 'EDIT_TASK',
+        item: data
+    }
+}
