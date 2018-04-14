@@ -16,11 +16,19 @@ const trelloReducer = (state = {}, action) => {
             const newList = state[type].filter((eachList) => eachList.title !== title);
         return Object.assign({}, state, {[type]: newList});
       case 'EDIT_TASK':
-            let editContent = {};
-            action.item.forEach(element => {
-                editContent = Object.assign({}, editContent, state, { [element.type]: element.list } )
-            });
-            return editContent;
+            const typeVal = action.item.item.type;
+            const oldTitle  = action.item.item.oldTitle;
+            
+            let editList = [];
+            state[typeVal].forEach((data, idx) => {
+                if(data.title == oldTitle){
+                  data.title = action.item.item.title;
+                  data.description = action.item.item.description;
+                }
+                editList[idx] = data;
+              });
+         
+            return Object.assign({}, state, {[typeVal]: editList});
       default:
         return state
     }
