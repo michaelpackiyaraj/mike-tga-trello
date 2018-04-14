@@ -55,20 +55,34 @@ class TodoList extends Component {
     this.props.removeItem({type, title});
   }
 
-  editItem = (type, title) => {
-    let editTitle = '';
-    let editDesc = '';
+  handleOpen = (type, title) => {
+    let editTitleVal = '';
+    let editDescVal = '';
     this.props.cardList.map((data, idx) => {
       if(title == data.title){
-        editTitle = data.title;
-        editDesc = data.description;
+        editTitleVal = data.title;
+        editDescVal = data.description;
       }
     });
 
-    this.setState({ open: true,title: editTitle,description: editDesc,type:type });
-    this.props.editItem({type, title});
+    this.setState({ 
+      open: true,
+      type:type,
+      oldTitle: editTitleVal,
+      title: editTitleVal,
+      description: editDescVal,
+      type:type 
+    });
+    
   }
-
+  editItem = () => {
+    let title = this.state.title;
+    let description = this.state.description;
+    let type = this.state.type;
+    let oldTitle = this.state.oldTitle;
+    this.props.editItem({type, title,description, oldTitle});
+    this.handleClose();
+  }
   render() {
 
     const headerStyle = {
@@ -85,7 +99,7 @@ class TodoList extends Component {
         label="Submit"
         primary={true}
         keyboardFocused={true}
-        onClick={this.handleClose}
+        onClick={this.editItem}
       />,
     ];
 
@@ -96,7 +110,7 @@ class TodoList extends Component {
                 <Droppable types = {this.props.types} onDrop={this.onDrop}>
                     { this.props.cardList.map((eachCard, index)=> (
                         <ListItem><Draggable type={this.props.type} key={`todo-${index}`} data = {JSON.stringify({item: eachCard, removeType: this.props.type})} >
-                            <Card type={this.props.type} editCallback={ this.editItem } removeCallback={ this.removeItem } key={index} { ...eachCard } />
+                            <Card type={this.props.type} editCallback={ this.handleOpen } removeCallback={ this.removeItem } key={index} { ...eachCard } />
                             <Dialog
                               title={this.state.type}
                               actions={actions}
@@ -110,6 +124,7 @@ class TodoList extends Component {
                                       floatingLabelText="Enter Title" ref='title'
                                       fullWidth="true"
                                       type="input"
+                                      ref="editTitle" 
                                       value={this.state.title}
                                       onChange={(e) => this.setState({title:e.target.value})}
                                     />
@@ -121,6 +136,7 @@ class TodoList extends Component {
                                       value={this.state.description}
                                        fullWidth="true"
                                        type="input"
+                                       ref="editDesc" 
                                        value={this.state.description}
                                       onChange={(e) => this.setState({description:e.target.value})}
                                     />

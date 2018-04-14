@@ -4,7 +4,7 @@ import TodoList from './components/todoList';
 import InprogressList from './components/inprogressList';
 import DoneList from './components/doneList';
 import { bindActionCreators } from 'redux';
-import { getTaskDetails, addTask, removeTask } from './actions';
+import { getTaskDetails, addTask, removeTask, editTask } from './actions';
 import responseData from './mockData/taskData.json';
 
 import AppBar from 'material-ui/AppBar';
@@ -39,8 +39,9 @@ class App extends Component {
       this.props.actions.addTask(updateItem);
   }
 
-  editItem = (data, type, types) => {
-    console.log("data appjs>>>",data, type, types);
+  editItem = (data) => {
+    let editItemObj = {item: data, addType: data.type};
+    this.props.actions.editTask(editItemObj);
   }
 
  componentDidMount() {
@@ -92,6 +93,7 @@ const mapDispatchToProps = (dispatch) => ({
       actions: {
           getTaskDetails: bindActionCreators(getTaskDetails, dispatch),
           addTask: bindActionCreators(addTask, dispatch),
+          editTask: bindActionCreators(editTask, dispatch),
           removeTask: bindActionCreators(removeTask, dispatch)
       }
 });
