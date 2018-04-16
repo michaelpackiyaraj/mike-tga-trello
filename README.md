@@ -57,3 +57,9 @@ Collection name as taskcollections<br><br>
 Insert below Dummy data:<br>
 db.taskcollection.insertMany([{"type":"todo","list":[{"title":"Todo title 1","description":"Todo description 1"},{"title":"Todo title 2","description":"Todo description 2"}]},{"type":"inprogress","list":[{"title":"In Progress title 1","description":"In Progress description 1"},{"title":"In Progress title 2","description":"In Progress description 2"}]},{"type":"done","list":[{"title":"Done title 1","description":"In Progress description 1"},{"title":"Done title 2","description":"In Progress description 2"}]}])
 
+## TODO:
+1. Need to make the todo, in-progress, done list should be dynamic and make it single reusable structure.
+2. Now we are fetching the data from mongodb and doing the edit and delete in Redux store. It should update the DB as well.
+3. Unit Testing - Testcase for all the scenario.
+4. PWA - latest apprach need to implement.
+
